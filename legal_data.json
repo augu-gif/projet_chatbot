@@ -1,0 +1,64 @@
+{
+  "categories": {
+    "creation_entreprise": {
+      "name": "Création d'entreprise",
+      "keywords": [
+        "création",
+        "entreprise",
+        "société",
+        "statuts",
+        "immatriculation"
+      ],
+      "responses": [
+        "Pour créer une entreprise, vous devez publier un avis de constitution dans un journal d'annonces légales.",
+        "La publication doit contenir : dénomination sociale, forme juridique, capital, siège social, objet social, durée, gérant."
+      ]
+    },
+    "modification_statuts": {
+      "name": "Modification des statuts",
+      "keywords": [
+        "modification",
+        "statuts",
+        "changement",
+        "adresse",
+        "capital"
+      ],
+      "responses": [
+        "Toute modification des statuts doit faire l'objet d'une publication légale.",
+        "Les modifications courantes concernent : changement d'adresse, augmentation de capital, nomination de dirigeants."
+      ]
+    },
+    "dissolution": {
+      "name": "Dissolution",
+      "keywords": [
+        "dissolution",
+        "liquidation",
+        "fermeture",
+        "cessation"
+      ],
+      "responses": [
+        "La dissolution d'une société nécessite une publication d'avis de dissolution.",
+        "Vous devez publier l'avis dans les 30 jours suivant la décision de dissolution."
+      ]
+    }
+  },
+  "faq": {
+    "tarifs": {
+      "question": "Quels sont les tarifs des annonces légales ?",
+      "answer": "Les tarifs varient selon la longueur de l'annonce et le département. Contactez-nous pour un devis personnalisé."
+    },
+    "delais": {
+      "question": "Quels sont les délais de publication ?",
+      "answer": "Les annonces peuvent être publiées sous 24h après validation du contenu et paiement."
+    },
+    "juridictions": {
+      "question": "Dans quels départements publiez-vous ?",
+      "answer": "Nous couvrons tous les départements français. Précisez votre département pour connaître les journaux habilités."
+    }
+  },
+  "contact": {
+    "email": "contact@annonces-legales.fr",
+    "telephone": "01 23 45 67 89",
+    "horaires": "Du lundi au vendredi, 9h-18h"
+  }
+}
