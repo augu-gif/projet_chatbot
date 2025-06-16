@@ -1,31 +1,125 @@
 {
+  "metadata": {
+    "version": "1.0",
+    "last_updated": "2024-03-19",
+    "description": "Base de connaissances pour le chatbot juridique de La Gazette"
+  },
   "categories": {
     "creation_entreprise": {
-      "name": "Création d'entreprise",
+      "title": "Création d'entreprise",
+      "description": "Informations sur la création d'une entreprise et les formalités associées",
       "keywords": [
         "création",
         "entreprise",
         "société",
         "statuts",
-        "immatriculation"
+        "immatriculation",
+        "nouvelle société",
+        "démarrage"
       ],
+      "context": {
+        "type": "formalite",
+        "priority": "high",
+        "tags": ["constitution", "démarrage", "formalités"]
+      },
+      "examples": {
+        "questions": [
+          "Comment créer une entreprise ?",
+          "Quelles sont les étapes pour créer une société ?",
+          "J'aimerais créer une entreprise, que dois-je faire ?",
+          "C'est quoi les démarches pour créer une boîte ?",
+          "Je veux monter ma boîte, par où commencer ?"
+        ],
+        "variations": [
+          "créer une entreprise",
+          "monter une société",
+          "démarrage d'entreprise",
+          "nouvelle société",
+          "création de boîte"
+        ]
+      },
       "responses": [
-        "Pour créer une entreprise, vous devez publier un avis de constitution dans un journal d'annonces légales.",
-        "La publication doit contenir : dénomination sociale, forme juridique, capital, siège social, objet social, durée, gérant."
+        {
+          "type": "principal",
+          "content": "Pour créer une entreprise, vous devez publier un avis de constitution dans un journal d'annonces légales.",
+          "details": [
+            "La publication doit contenir :",
+            "- Dénomination sociale",
+            "- Forme juridique",
+            "- Capital social",
+            "- Siège social",
+            "- Objet social",
+            "- Durée",
+            "- Identité du gérant"
+          ]
+        },
+        {
+          "type": "complementaire",
+          "content": "Après la publication, vous devrez déposer votre dossier au greffe du tribunal de commerce.",
+          "details": [
+            "Documents nécessaires :",
+            "- Exemplaire des statuts",
+            "- Justificatif de publication",
+            "- Formulaire M0"
+          ]
+        }
       ]
     },
     "modification_statuts": {
-      "name": "Modification des statuts",
+      "title": "Modification des statuts",
+      "description": "Procédures pour modifier les statuts d'une société existante",
       "keywords": [
         "modification",
         "statuts",
         "changement",
         "adresse",
-        "capital"
+        "capital",
+        "siège social",
+        "objet social"
       ],
+      "context": {
+        "type": "formalite",
+        "priority": "high",
+        "tags": ["modification", "changement", "formalités"]
+      },
+      "examples": {
+        "questions": [
+          "Comment modifier les statuts de ma société ?",
+          "Je veux changer l'adresse de mon entreprise",
+          "Comment augmenter le capital social ?",
+          "Je dois changer le gérant, que faire ?",
+          "Comment modifier l'objet social ?"
+        ],
+        "variations": [
+          "changer les statuts",
+          "modifier l'adresse",
+          "augmenter le capital",
+          "changer de gérant",
+          "modifier l'objet"
+        ]
+      },
       "responses": [
-        "Toute modification des statuts doit faire l'objet d'une publication légale.",
-        "Les modifications courantes concernent : changement d'adresse, augmentation de capital, nomination de dirigeants."
+        {
+          "type": "principal",
+          "content": "Toute modification des statuts doit faire l'objet d'une publication légale.",
+          "details": [
+            "Les modifications courantes concernent :",
+            "- Changement d'adresse",
+            "- Augmentation de capital",
+            "- Nomination de nouveaux dirigeants",
+            "- Modification de l'objet social"
+          ]
+        },
+        {
+          "type": "complementaire",
+          "content": "La publication doit être faite dans un délai d'un mois après la décision de modification.",
+          "details": [
+            "Documents à fournir :",
+            "- Décision de modification",
+            "- Nouveaux statuts",
+            "- Justificatifs selon le type de modification"
+          ]
+        }
       ]
     },
     "dissolution": {
@@ -44,12 +138,115 @@
   },
   "faq": {
     "tarifs": {
-      "question": "Quels sont les tarifs des annonces légales ?",
-      "answer": "Les tarifs varient selon la longueur de l'annonce et le département. Contactez-nous pour un devis personnalisé."
+      "title": "Tarifs des annonces légales",
+      "description": "Informations sur les tarifs et le calcul du coût des publications",
+      "keywords": [
+        "tarif",
+        "prix",
+        "coût",
+        "devis",
+        "publication",
+        "annonce"
+      ],
+      "context": {
+        "type": "information",
+        "priority": "medium",
+        "tags": ["tarifs", "coûts", "devis"]
+      },
+      "examples": {
+        "questions": [
+          "Combien coûte une annonce légale ?",
+          "Quels sont vos tarifs ?",
+          "Comment calculer le prix d'une publication ?",
+          "Je veux un devis pour une annonce",
+          "C'est quoi le tarif pour publier ?"
+        ],
+        "variations": [
+          "prix annonce",
+          "coût publication",
+          "tarif journal",
+          "devis annonce",
+          "calcul prix"
+        ]
+      },
+      "responses": [
+        {
+          "type": "principal",
+          "content": "Les tarifs varient selon la longueur de l'annonce et le département.",
+          "details": [
+            "Facteurs influençant le prix :",
+            "- Nombre de caractères",
+            "- Département de publication",
+            "- Type d'annonce",
+            "- Urgence de publication"
+          ]
+        },
+        {
+          "type": "complementaire",
+          "content": "Contactez-nous pour un devis personnalisé basé sur votre projet.",
+          "details": [
+            "Pour obtenir un devis :",
+            "- Envoyez votre texte",
+            "- Précisez le département",
+            "- Indiquez la date souhaitée"
+          ]
+        }
+      ]
     },
     "delais": {
-      "question": "Quels sont les délais de publication ?",
-      "answer": "Les annonces peuvent être publiées sous 24h après validation du contenu et paiement."
+      "title": "Délais de publication",
+      "description": "Informations sur les délais de traitement et de publication des annonces",
+      "keywords": [
+        "délai",
+        "délais",
+        "temps",
+        "publication",
+        "rapide",
+        "urgent"
+      ],
+      "context": {
+        "type": "information",
+        "priority": "medium",
+        "tags": ["délais", "temps", "urgent"]
+      },
+      "examples": {
+        "questions": [
+          "En combien de temps est publiée une annonce ?",
+          "C'est urgent, je dois publier rapidement",
+          "Quels sont vos délais de publication ?",
+          "Je dois publier demain, c'est possible ?",
+          "C'est long pour publier une annonce ?"
+        ],
+        "variations": [
+          "délai publication",
+          "temps traitement",
+          "publication rapide",
+          "urgence annonce",
+          "délai journal"
+        ]
+      },
+      "responses": [
+        {
+          "type": "principal",
+          "content": "Les annonces peuvent être publiées sous 24h après validation du contenu et paiement.",
+          "details": [
+            "Délais standards :",
+            "- Validation : 2-4 heures",
+            "- Publication : 24-48 heures",
+            "- Service express : publication le jour même"
+          ]
+        },
+        {
+          "type": "complementaire",
+          "content": "Pour les urgences, nous proposons un service de publication express.",
+          "details": [
+            "Service express :",
+            "- Validation prioritaire",
+            "- Publication le jour même",
+            "- Confirmation par email"
+          ]
+        }
+      ]
     },
     "juridictions": {
       "question": "Dans quels départements publiez-vous ?",
@@ -59,6 +256,7 @@
   "contact": {
     "email": "contact@annonces-legales.fr",
     "telephone": "01 23 45 67 89",
-    "horaires": "Du lundi au vendredi, 9h-18h"
+    "horaires": "Du lundi au vendredi, 9h-18h",
+    "adresse": "123 rue des Annonces, 75001 Paris"
   }
 }
