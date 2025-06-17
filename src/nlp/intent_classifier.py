@@ -121,15 +121,16 @@ class IntentClassifier:
         output_path = Path(output_dir)
         output_path.mkdir(parents=True, exist_ok=True)
         
-        # Entraînement
-        train(
-            self.nlp,
-            train_config,
-            training_data,
-            output_path,
-            n_iter=n_iter
-        )
-        
+        # Préparation de l'optimiseur
+        optimizer = self.nlp.begin_training()
+        for i in range(n_iter):
+            random.shuffle(training_data)
+            losses = {}
+            for example in training_data:
+                self.nlp.update([example], drop=0.5, losses=losses, sgd=optimizer)
+            logger.info(f"Iteration {i+1}/{n_iter}, Losses: {losses}")
+
+        self.save(output_dir)
         logger.info(f"✅ Modèle entraîné et sauvegardé dans {output_dir}")
     
     def predict(self, text: str) -> Tuple[str, float]:
@@ -146,7 +147,7 @@ class IntentClassifier:
         cats = doc.cats
         
         if not cats:
-            return None, 0.0
+            return "", 0.0
         
         # Trouver la catégorie avec le meilleur score
         best_cat = max(cats.items(), key=lambda x: x[1])

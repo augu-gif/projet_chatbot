@@ -41,7 +41,7 @@ class ChatbotGUI:
         """Configure l'interface utilisateur"""
         # Frame principal avec padding
         main_frame = ttk.Frame(self.root, padding="20")
-        main_frame.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
+        main_frame.grid(row=0, column=0, sticky="nsew")
         
         # Titre stylisé
         title_label = tk.Label(
@@ -52,11 +52,11 @@ class ChatbotGUI:
             fg=self.colors["text"],
             pady=10
         )
-        title_label.grid(row=0, column=0, columnspan=2, sticky=(tk.W, tk.E))
+        title_label.grid(row=0, column=0, columnspan=2, sticky="we")
         
         # Frame pour la zone de chat avec bordure
         chat_frame = ttk.Frame(main_frame, style="Chat.TFrame")
-        chat_frame.grid(row=1, column=0, columnspan=2, sticky=(tk.W, tk.E, tk.N, tk.S), pady=(0, 10))
+        chat_frame.grid(row=1, column=0, columnspan=2, sticky="nsew", pady=(0, 10))
         
         # Zone de chat avec style personnalisé
         self.chat_area = scrolledtext.ScrolledText(
@@ -70,12 +70,12 @@ class ChatbotGUI:
             padx=10,
             pady=10
         )
-        self.chat_area.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
+        self.chat_area.grid(row=0, column=0, sticky="nsew")
         self.chat_area.config(state=tk.DISABLED)
         
         # Frame pour la zone de saisie
         input_frame = ttk.Frame(main_frame)
-        input_frame.grid(row=2, column=0, columnspan=2, sticky=(tk.W, tk.E))
+        input_frame.grid(row=2, column=0, columnspan=2, sticky="we")
         
         # Zone de saisie avec style
         self.input_field = ttk.Entry(
@@ -83,7 +83,7 @@ class ChatbotGUI:
             font=self.fonts["input"],
             width=40
         )
-        self.input_field.grid(row=0, column=0, sticky=(tk.W, tk.E), padx=(0, 10))
+        self.input_field.grid(row=0, column=0, sticky="we", padx=(0, 10))
         self.input_field.bind("<Return>", self.send_message)
         
         # Style personnalisé pour le bouton

@@ -3,7 +3,7 @@ import spacy
 from typing import Dict, List, Optional, Tuple
 from pathlib import Path
 import numpy as np
-from difflib import SequenceMatcher
+from difflib import SequenceMatcher, get_close_matches
 import logging
 from datetime import datetime
 import re
@@ -47,6 +47,20 @@ class IntentMatcher:
         else:
             self.intent_classifier = None
             logger.warning("⚠️ Aucun modèle de classification d'intentions trouvé")
+        
+        # Expressions génériques à supprimer
+        self.GENERIC_PATTERNS = [
+            r"^est-ce que\s+", r"^peut-on\s+", r"^je voudrais\s+", r"^je veux\s+",
+            r"^comment faire( pour)?\s+", r"^j'aimerais savoir\s+", r"^je souhaite\s+",
+            r"^pourriez-vous\s+", r"^pouvez-vous\s+", r"^serait-il possible de\s+"
+        ]
+        # Fautes fréquentes
+        self.COMMON_MISTAKES = {
+            "modifiacation": "modification",
+            "modifiaction": "modification",
+            "modifcation": "modification",
+            "modiffication": "modification"
+        }
     
     def _load_data(self) -> Dict:
         """Charge les données depuis le fichier JSON"""
@@ -64,12 +78,33 @@ class IntentMatcher:
             raise
     
     def _preprocess_text(self, text: str) -> str:
-        """Prétraite le texte pour la comparaison"""
-        # Conversion en minuscules et suppression des accents
+        """
+        Prétraite le texte pour améliorer la détection d'intention.
+        
+        Args:
+            text: Le texte à prétraiter
+            
+        Returns:
+            Le texte prétraité
+        """
         text = text.lower().strip()
-        # Suppression de la ponctuation
-        text = ''.join(c for c in text if c.isalnum() or c.isspace())
-        return text
+        # Suppression des tournures génériques
+        for pattern in self.GENERIC_PATTERNS:
+            text = re.sub(pattern, "", text)
+        # Correction fautes fréquentes et fuzzy
+        words = text.split()
+        corrected = []
+        for w in words:
+            if w in self.COMMON_MISTAKES:
+                corrected.append(self.COMMON_MISTAKES[w])
+            else:
+                close = get_close_matches(w, self.COMMON_MISTAKES.values(), n=1, cutoff=0.85)
+                corrected.append(close[0] if close else w)
+        text = " ".join(corrected)
+        # spaCy : lemmatisation et suppression des stopwords/ponctuation
+        doc = self.nlp(text)
+        tokens = [token.lemma_ for token in doc if not token.is_stop and not token.is_punct]
+        return " ".join(tokens)
     
     def _calculate_string_similarity(self, text1: str, text2: str) -> float:
         """Calcule la similarité entre deux textes avec SequenceMatcher"""
@@ -85,7 +120,16 @@ class IntentMatcher:
         return 0.0
     
     def _calculate_keyword_match_score(self, user_input: str, keywords: List[str]) -> float:
-        """Calcule un score basé sur la présence des mots-clés"""
+        """
+        Calcule un score basé sur la présence des mots-clés et leur similarité sémantique.
+        
+        Args:
+            user_input: Le texte de l'utilisateur
+            keywords: Liste des mots-clés à comparer
+            
+        Returns:
+            Score de similarité entre 0 et 1
+        """
         user_input = self._preprocess_text(user_input)
         user_words = set(user_input.split())
         
@@ -97,16 +141,27 @@ class IntentMatcher:
                             if any(self._preprocess_text(keyword) in word 
                                   for word in user_words))
         
-        # Score pour les mots-clés similaires
+        # Score pour les mots-clés similaires (similarité de chaînes)
         similar_matches = sum(1 for keyword in keywords 
                             if any(self._calculate_string_similarity(self._preprocess_text(keyword), word) > 0.8 
                                   for word in user_words))
         
-        # Combinaison des scores avec des poids
+        # Score pour les similarités sémantiques avec spaCy
+        semantic_matches = 0
+        user_doc = self.nlp(user_input)
+        for keyword in keywords:
+            keyword_doc = self.nlp(keyword)
+            if user_doc.has_vector and keyword_doc.has_vector:
+                similarity = user_doc.similarity(keyword_doc)
+                if similarity > 0.7:  # Seuil de similarité sémantique
+                    semantic_matches += 1
+        
+        # Combinaison des scores avec des poids ajustés
         total_score = (
             exact_matches * 1.0 +      # Score complet pour les correspondances exactes
             partial_matches * 0.7 +    # Score partiel pour les correspondances partielles
-            similar_matches * 0.5      # Score plus faible pour les similarités
+            similar_matches * 0.5 +    # Score plus faible pour les similarités de chaînes
+            semantic_matches * 0.8     # Score élevé pour les similarités sémantiques
         )
         
         # Normalisation du score
@@ -194,11 +249,11 @@ class IntentMatcher:
             variation_score = max(variation_scores) if variation_scores else 0.0
             logger.info(f"  - Score variations: {variation_score:.2f}")
             
-            # Score final combiné
+            # Score final combiné (rééquilibré)
             final_score = (
-                keyword_score * 0.5 +      # 50% pour les mots-clés
-                example_score * 0.3 +      # 30% pour les exemples
-                variation_score * 0.2       # 20% pour les variations
+                keyword_score * 0.3 +      # 30% pour les mots-clés
+                example_score * 0.5 +      # 50% pour les exemples
+                variation_score * 0.2      # 20% pour les variations
             )
             logger.info(f"  - Score final: {final_score:.2f}")
             
@@ -248,11 +303,11 @@ class IntentMatcher:
             variation_score = max(variation_scores) if variation_scores else 0.0
             logger.info(f"  - Score variations: {variation_score:.2f}")
             
-            # Score final combiné
+            # Score final combiné (rééquilibré)
             final_score = (
-                keyword_score * 0.5 +      # 50% pour les mots-clés
-                example_score * 0.3 +      # 30% pour les exemples
-                variation_score * 0.2       # 20% pour les variations
+                keyword_score * 0.3 +      # 30% pour les mots-clés
+                example_score * 0.5 +      # 50% pour les exemples
+                variation_score * 0.2      # 20% pour les variations
             )
             logger.info(f"  - Score final: {final_score:.2f}")
             

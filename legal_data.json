@@ -75,7 +75,20 @@
         "adresse",
         "capital",
         "siège social",
-        "objet social"
+        "objet social",
+        "entreprise",
+        "société",
+        "modifier",
+        "changer",
+        "transformation",
+        "adaptation",
+        "évolution",
+        "mise à jour",
+        "actualisation",
+        "révision",
+        "amendement",
+        "rectification",
+        "ajustement"
       ],
       "context": {
         "type": "formalite",
@@ -88,14 +101,24 @@
           "Je veux changer l'adresse de mon entreprise",
           "Comment augmenter le capital social ?",
           "Je dois changer le gérant, que faire ?",
-          "Comment modifier l'objet social ?"
+          "Comment modifier l'objet social ?",
+          "Comment faire une modification d'entreprise ?",
+          "Je souhaite modifier ma société",
+          "Quelles sont les démarches pour changer les statuts ?",
+          "Comment mettre à jour les statuts de mon entreprise ?",
+          "Je veux faire évoluer ma société"
         ],
         "variations": [
           "changer les statuts",
           "modifier l'adresse",
           "augmenter le capital",
           "changer de gérant",
-          "modifier l'objet"
+          "modifier l'objet",
+          "modification entreprise",
+          "changement société",
+          "évolution statuts",
+          "mise à jour statuts",
+          "transformation entreprise"
         ]
       },
       "responses": [
