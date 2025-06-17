@@ -62,12 +62,6 @@ Il comprend des formulations variées autour des thématiques suivantes :
 
 ---
 
-### Zones de publication
-
-**Exemples de questions :**
-- Dans quels départements publiez-vous ?
-
-
 ## Fonctionnalités
 
 - Interface graphique conviviale avec Tkinter
