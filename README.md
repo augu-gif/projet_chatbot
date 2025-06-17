@@ -11,6 +11,68 @@
 
 Un chatbot intelligent conçu pour répondre aux questions les plus fréquentes sur les annonces légales : types d'annonces, obligations de publication, délais, informations à fournir, etc. Développé dans le cadre d’un stage, ce projet s’appuie sur un moteur de traitement du langage naturel (NLP) pour comprendre les demandes des utilisateurs et fournir des réponses claires, contextualisées et faciles d’accès.
 
+## Ce que le chatbot peut comprendre
+
+Le chatbot repose sur une base de connaissances structurée (legal_data.json) lui permettant de répondre automatiquement aux questions les plus courantes sur les annonces légales.
+
+Il comprend des formulations variées autour des thématiques suivantes :
+
+### Création d’entreprise
+
+Exemples de questions :
+
+Comment créer une entreprise ?
+
+Quelles sont les étapes pour créer une société ?
+
+Je veux monter ma boîte, que dois-je faire ?
+
+### Modification des statuts
+
+Exemples de questions :
+
+Comment modifier les statuts de ma société ?
+
+Je veux changer le gérant ou l’adresse de l’entreprise.
+
+Quelles sont les démarches pour changer les statuts ?
+
+### Dissolution d’une entreprise
+
+Exemples de questions :
+
+Comment fermer ma société ?
+
+Quelles sont les démarches de dissolution ?
+
+Faut-il publier un avis pour liquider ?
+
+### Tarifs des annonces légales
+
+Exemples de questions :
+
+Combien coûte une annonce légale ?
+
+C’est quoi le tarif pour publier ?
+
+Je veux un devis, comment faire ?
+
+### Délais de publication
+
+Exemples de questions :
+
+En combien de temps une annonce est-elle publiée ?
+
+C’est urgent, pouvez-vous publier demain ?
+
+Quels sont vos délais de traitement ?
+
+### Zones de publication
+
+Exemples de questions :
+
+Dans quels départements publiez-vous ?
+
 ## Fonctionnalités
 
 - Interface graphique conviviale avec Tkinter
