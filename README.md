@@ -24,7 +24,6 @@ Il comprend des formulations variées autour des thématiques suivantes :
 **Exemples de questions :**
 - Comment créer une entreprise ?
 - Quelles sont les étapes pour créer une société ?
-- Je veux monter ma boîte, que dois-je faire ?
 
 ---
 
