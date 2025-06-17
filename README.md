@@ -14,8 +14,10 @@ Un chatbot intelligent conçu pour répondre aux questions les plus fréquentes 
 
 1. Clonez le dépôt :
 ```bash
-git clone [URL_DU_REPO]
-cd [NOM_DU_DOSSIER]
+git clone https://github.com/augu-gif/projet-chatbot.git
+
+cd projet-chatbot
+
 ```
 
 2. Créez un environnement virtuel et activez-le :
