@@ -1,6 +1,6 @@
 # Chatbot Annonces Légales
 
-## 🚀 Lancer l'application
+## Lancer l'application
 
 <p align="center">
   <a href="https://augu-gif-projet-chatbot-app-oj9sw8.streamlit.app/">
