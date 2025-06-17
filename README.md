@@ -2,7 +2,7 @@
 
 ## 🚀 Lancer l'application
 
-➡️ <p align="center">
+<p align="center">
   <a href="https://augu-gif-projet-chatbot-app-oj9sw8.streamlit.app/">
     <img src="https://streamlit.io/images/brand/streamlit-logo-primary-colormark-darktext.png" alt="Streamlit App" width="200"/>
   </a>
