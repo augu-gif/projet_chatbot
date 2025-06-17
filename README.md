@@ -1,6 +1,6 @@
 # Chatbot Annonces Légales
 
-Un chatbot intelligent pour répondre aux questions sur les annonces légales, développé dans le cadre d'un stage pour un journal d'annonces légales.
+Un chatbot intelligent conçu pour répondre aux questions les plus fréquentes sur les annonces légales : types d'annonces, obligations de publication, délais, informations à fournir, etc. Développé dans le cadre d’un stage, ce projet s’appuie sur un moteur de traitement du langage naturel (NLP) pour comprendre les demandes des utilisateurs et fournir des réponses claires, contextualisées et faciles d’accès.
 
 ## Fonctionnalités
 
@@ -75,12 +75,3 @@ Modifiez le fichier `legal_data.json` pour ajouter de nouvelles catégories ou F
     }
 }
 ```
-
-## Contribution
-
-Les contributions sont les bienvenues ! N'hésitez pas à :
-1. Fork le projet
-2. Créer une branche pour votre fonctionnalité
-3. Commiter vos changements
-4. Pousser vers la branche
-5. Ouvrir une Pull Request
