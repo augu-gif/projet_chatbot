@@ -1,14 +1,12 @@
 # Chatbot Annonces Légales
 
-<p align="center">
+## 🚀 Lancer l'application
+
+➡️ <p align="center">
   <a href="https://augu-gif-projet-chatbot-app-oj9sw8.streamlit.app/">
     <img src="https://streamlit.io/images/brand/streamlit-logo-primary-colormark-darktext.png" alt="Streamlit App" width="200"/>
   </a>
 </p>
-
-## 🚀 Lancer l'application
-
-➡️ [Clique ici pour accéder au chatbot en ligne](https://augu-gif-projet-chatbot-app-oj9sw8.streamlit.app/)
  
 
 Un chatbot intelligent conçu pour répondre aux questions les plus fréquentes sur les annonces légales : types d'annonces, obligations de publication, délais, informations à fournir, etc. Développé dans le cadre d’un stage, ce projet s’appuie sur un moteur de traitement du langage naturel (NLP) pour comprendre les demandes des utilisateurs et fournir des réponses claires, contextualisées et faciles d’accès.
