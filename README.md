@@ -41,7 +41,6 @@ Il comprend des formulations variées autour des thématiques suivantes :
 **Exemples de questions :**
 - Comment fermer ma société ?
 - Quelles sont les démarches de dissolution ?
-- Faut-il publier un avis pour liquider ?
 
 ---
 
