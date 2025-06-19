@@ -8,7 +8,7 @@ st.title("💬 Chatbot - Annonces Légales")
 chatbot = LegalAnnouncementChatbot(data_file="legal_data.json")
 
 # Zone de saisie
-question = st.text_input("Pose ta question sur les annonces légales :")
+question = st.text_input("Posez votre question sur les annonces légales :")
 
 if question:
     reponse = chatbot.get_response(question)
